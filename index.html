@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>移动端</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <link rel="stylesheet" href="css/reset.min.css"/>
+    <link rel="stylesheet" href="css/swiper.min.css"/>
+    <link rel="stylesheet" href="css/animate.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
+    <script>
+        var desW = 640;
+        var winW = document.documentElement.clientWidth;
+        document.documentElement.style.fontSize = winW/desW*100+"px";
+    </script>
+</head>
+<body>
+    <section class="main">
+        <section class="music">
+            <!--<audio src="audio/beyond.mp3" preload="none" id="beyond"></audio>-->
+        </section>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide slide1" >
+                    <img src="img/jianli.png" alt=""/>
+                    <img src="img/liubianxing.png" alt=""/>
+                    <img src="img/liubianxing.png" alt=""/>
+                    <span class="s s1"></span>
+                    <span class="s s2"></span>
+                    <div class="name">
+                    <span class="name1"> 王 静 静 </span>
+                        <span class="name2">Birth: 1990  /10  /06</span>
+                        <span class="name3">汉</span>
+                        <p></p>
+                        <p class="p2">星座：天秤座</p>
+                        <img src="img/jiantou.gif" alt=""/>
+                    </div>
+
+                </div>
+                <div class="swiper-slide slide2" >
+                    <img src="img/beijing2.jpg" alt="" class="img1">
+                    <img src="img/sanjiao.png" alt="">
+                    <p>基本信息 <br><span>Basic</span></p>
+                   <span class="xian xian1"></span>
+                    <span class="xian xian2"></span>
+                    <div class="zp"></div>
+                        <!--<img src="img/zp4jpg" alt="" class="zp">-->
+                    <div class="xinxi">
+                        <div>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <ul>
+                                <li>姓名：王静静</li>
+                                <li>出生年月：1990、10、06</li>
+                                <li>民族：汉</li>
+                                <li>学历：本科</li>
+                                <li>身高：165cm</li>
+                                <li>毕业院校：北京交通大学</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="xuehua"></div>
+                    <div class="xuehua xuehua3"></div>
+                    <div class="xuehua xuehua4"></div>
+                    <div class="xuehua xuehua5"></div>
+
+
+                </div>
+                <div class="swiper-slide slide3">
+                    <img src="img/beijing2.jpg" alt="" class="img1">
+                    <img src="img/sanjiao.png" alt="">
+                    <p>求职意向 <br><span>Job wanted</span></p>
+                    <span class="xian xian1"></span>
+                    <span class="xian xian2"></span>
+                    <div>
+                        <img src="img/xuanzhuan.png" alt="">
+                        <img src="img/xuanzhuan.png" alt="">
+                        <img src="img/xuanzhuan.png" alt="">
+                        <img src="img/xuanzhuan.png" alt="">
+                        <img src="img/xuanzhuan.png" alt="">
+                    </div>
+                    <ul>
+                        <li>求职岗位</li>
+                        <li>月薪期望</li>
+                        <li>到职日期</li>
+                        <li>工作地区</li>
+                        <li>工作经历</li>
+                    </ul>
+                    <ul class="ul2">
+                        <li>前端工程师</li>
+                        <li>面议</li>
+                        <li>待定</li>
+                        <li>北京</li>
+                        <li>北京昊华 <br>能源股份有限公司</li>
+                    </ul>
+                </div>
+                <div class="swiper-slide slide4">
+                    <img src="img/beijing2.jpg" alt="" class="img1">
+                    <img src="img/chilun.gif" alt="">
+                    <img src="img/chilun3.png" alt="">
+                    <img src="img/chilun2.png" alt="">
+                    <p>18810160752</p>
+                    <p>912549185</p>
+                    <p>北京昌平区回龙观</p>
+                    <p>912549185@qq.com</p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>
+<script src="js/swiper.min.js"></script>
+<script>
+    var mySwiper = new Swiper(".swiper-container",{
+        direction:"vertical",
+        loop :true,/*循环模式*/
+        onTransitionEnd: function(swiper){
+            var curIndex = swiper.activeIndex;//当前活动滑块的索引（也就是上一个滑块滑动结束后，到下一个滑块的索引）
+            var slides = swiper.slides;//获得所有的滑块
+            //要做的事情：通过当前活动滑块的索引找到对应的滑块，并给它增加相应的id名
+            [].forEach.call(slides,function(item,index){
+                item.id = "";//在给当前滑块增加id名之前，把所有的滑块的id名去掉
+                if(index == curIndex) {
+                    //当前活动滑块是否是第一个或者最后一个
+                  switch (index){
+                      case 0:
+                          item.id = "page"+(slides.length-2);
+                          break;
+                      case slides.length-1:
+                          item.id = "page1";
+                          break;
+                      default :
+                          item.id= "page"+index;
+                  }
+
+                }
+
+             })
+
+        }
+
+    })
+    var music = document.querySelector(".music");
+    var beyond = document.querySelector("#beyond");
+    window.setTimeout(function(){
+        //beyond.play();
+        music.style.opacity = 1;
+        music.className = "music musicMove";
+    },1000)
+    music.addEventListener("click",function(){
+        if(beyond.paused){
+            beyond.play();
+            music.className = "music musicMove";
+        }else{
+            beyond.pause();
+            music.className = "music";
+        }
+    },false)
+
+
+</script>
